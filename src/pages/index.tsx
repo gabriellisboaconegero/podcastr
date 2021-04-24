@@ -8,6 +8,7 @@
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";  //Utilizar o componente Link do next evita que todos os arquivos sejam carregados novamente
+import { useContext } from "react";
 
 import { api } from "../services/api";
 
@@ -21,9 +22,13 @@ import styles from "./home.module.scss";
 import { EpisodeApi } from "../types/EpisodeApi";
 import { HomeProps } from "../types/HomeProps";
 
+import { PlayerContext } from "../contexts/playerContext";
+
 
 
 export default function Home({allEpisodes, latestEpisodes}: HomeProps) {
+
+    const {play} = useContext(PlayerContext);
 
   return (
     <div className={styles.homePage}>
@@ -52,7 +57,7 @@ export default function Home({allEpisodes, latestEpisodes}: HomeProps) {
                 <span>{episode.durationString}</span>
               </div>             
 
-              <button className={styles.play}>
+              <button className={styles.play} onClick={() => play(episode)}>
                 <img src="/play-green.svg" alt="tocar episódio"/>
               </button>
 
@@ -97,7 +102,7 @@ export default function Home({allEpisodes, latestEpisodes}: HomeProps) {
                   <td style={{width: 100}}>{episode.publishedAt}</td>
                   <td>{episode.durationString}</td>
                   <td>
-                    <button>
+                    <button onClick={() => play(episode)}>
                       <img src="/play-green.svg" alt="Tocar podacast"/>
                     </button>
                   </td>

@@ -1,11 +1,20 @@
+import { useContext } from "react";
+
+import { PlayerContext } from "../../contexts/playerContext";
+
 import styles from "./styles.module.scss"
 
 export default function Player(props){
+
+    const {currentEpisodeIndex, episodeList} = useContext(PlayerContext);
+
+    const episode = episodeList[currentEpisodeIndex];
+
     return (
         <div className={styles.playerContainer}>
             <header>
                 <img src="/playing.svg" alt="Tocando Agora"/>
-                <strong>Tocando agora</strong>
+                <strong>Tocando agora {episode?.title}</strong>
             </header>
             <div className={styles.emptyPlayer}>
                 <strong>Selecione um podcast para ouvir</strong>
