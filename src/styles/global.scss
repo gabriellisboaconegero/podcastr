@@ -1,3 +1,5 @@
+// o global vai ser chamado na home tbm, porem como não é um modulo ele será apalicado para todo o html não só o daquela rota
+
 @import "colors";
 
 *{
@@ -5,6 +7,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+@media (max-width: 1366px) {
+    html {
+      font-size: 80%;
+    }
+}
+
 @media (max-width: 1080px){
     html{
         font-size: 93.75%; //15 px
@@ -36,4 +45,5 @@ h2{
 }
 button{
     cursor: pointer;
+    outline: none;
 }

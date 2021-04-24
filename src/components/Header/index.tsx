@@ -1,3 +1,13 @@
+// o componente recebe um parametro chamado props, dentro dele estão contido os paraametros passados dentro do html do componente e 
+// o props.children são os componentes/conteudo dentro do html do componente
+// ex: <Header param='exemplo'>
+//      <p>Hello World</p>
+//     </Header>
+// o props desse componente vai conter
+// props.children = <p>Hello world</p>
+// props.param = 'exemplo'
+
+
 import format from "date-fns/format";
 import { ptBR } from "date-fns/locale";
 

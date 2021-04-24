@@ -1,3 +1,6 @@
+// vai ser chamado apenas uma vez, quando entrar no site
+
+
 import Document, {Html, Head, Main, NextScript} from "next/document";
 
 export default class MyDocument extends Document{
