@@ -8,6 +8,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 // import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 import { EpisodeFormated } from "../../types/EpisodeFormated";
 
@@ -32,6 +33,9 @@ export default function Episode({episode}: EpisodeProps){
 
     return (
         <div className={styles.episode}>
+            <Head>
+                <title>{episode.title}</title>
+            </Head>
             <div className={styles.thumbnailContainer}>
                 <Link href='/'>
                     <button>

@@ -8,6 +8,7 @@
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";  //Utilizar o componente Link do next evita que todos os arquivos sejam carregados novamente
+import Head from 'next/head';
 
 import { api } from "../services/api";
 
@@ -32,6 +33,9 @@ export default function Home({allEpisodes, latestEpisodes}: HomeProps) {
 
   return (
     <div className={styles.homePage}>
+      <Head>
+        <title>Home | Podcast</title>
+      </Head>
       <section className={styles.latestEpisodes}>
         <h2>Últimos lançamentos</h2>
 

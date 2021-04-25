@@ -17,4 +17,5 @@ export type PlayerContextData = {
     spaceDivPauseRef: any;
     toggleShuffle: () => void;
     isShuffling: boolean;
+    clearPlayerState: () => void;
 }

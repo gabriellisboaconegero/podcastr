@@ -17,7 +17,7 @@ export function PlayerContextPovider({children}){
 
     const spaceDivPauseRef = useRef<HTMLDivElement>(null);
 
-    const hasNext = (currentEpisodeIndex + 1) < episodeList.length;
+    const hasNext = isShuffling || (currentEpisodeIndex + 1) < episodeList.length;
     const hasPrevious = currentEpisodeIndex > 0;
 
     function playList(list: EpisodePlayer[], index: number){
@@ -54,6 +54,11 @@ export function PlayerContextPovider({children}){
         }
     }
 
+    function clearPlayerState(){
+        setCurrentEpisodeIndex(0);
+        setEpisodeList([]);
+    }
+
     function playNext(){
         if (isShuffling){
             setCurrentEpisodeIndex(Math.floor(Math.random() * episodeList.length));
@@ -85,6 +90,7 @@ export function PlayerContextPovider({children}){
         spaceDivPauseRef,
         toggleShuffle,
         isShuffling,
+        clearPlayerState
     }
 
     return (
