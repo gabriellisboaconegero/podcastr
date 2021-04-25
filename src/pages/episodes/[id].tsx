@@ -19,6 +19,8 @@ import { ptBR } from "date-fns/locale";
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString";
 
 import styles from './episode.module.scss';
+import { useContext } from "react";
+import { PlayerContext } from "../../contexts/PlayerContext";
 
 type EpisodeProps = {
     episode: EpisodeFormated;
@@ -27,11 +29,7 @@ type EpisodeProps = {
 
 export default function Episode({episode}: EpisodeProps){
 
-    // const router = useRouter();
-
-    // if (router.isFallback){
-    //     return <p>Carregando...</p>
-    // }
+    const {play} = useContext(PlayerContext);
 
     return (
         <div className={styles.episode}>
@@ -48,7 +46,7 @@ export default function Episode({episode}: EpisodeProps){
                 alt={episode.title}
                 objectFit="cover"
                 />
-                <button>
+                <button onClick={() => play(episode)}>
                     <img src="/play.svg" alt="Tocar episódio"/>
                 </button>
             </div>

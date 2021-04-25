@@ -10,21 +10,38 @@ import styles from '../styles/app.module.scss';
 
 import React, { useState } from "react";
 
-import { PlayerContext } from "../contexts/playerContext";
+import { PlayerContext } from "../contexts/PlayerContext";
 
 export default function MyApp({ Component, pageProps }) {
 
   const [episodeList, setEpisodeList] = useState([]);
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   function play(episode){
+    console.log();
     setEpisodeList([episode]);
     setCurrentEpisodeIndex(0);
+    setIsPlaying(true);
+  }
+
+  function togglePlay(){
+    setIsPlaying(!isPlaying);
+  }
+
+  function setPlayingState(state: boolean){
+    setIsPlaying(state);
+  }
+
+  function spaceToggle(e){
+    if (e.code == "Space" && !!episodeList.length){
+      togglePlay();
+    }
   }
 
   return (
-    <PlayerContext.Provider value={{episodeList, currentEpisodeIndex, play}}>
-      <div className={styles.wrapper}>
+    <PlayerContext.Provider value={{episodeList, currentEpisodeIndex, play, isPlaying, togglePlay, setPlayingState}}>
+      <div className={styles.wrapper} onKeyDown={spaceToggle} tabIndex={-1}>
         <main>
           <Header />
           <Component {...pageProps} />

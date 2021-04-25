@@ -22,7 +22,7 @@ import styles from "./home.module.scss";
 import { EpisodeApi } from "../types/EpisodeApi";
 import { HomeProps } from "../types/HomeProps";
 
-import { PlayerContext } from "../contexts/playerContext";
+import { PlayerContext } from "../contexts/PlayerContext";
 
 
 
